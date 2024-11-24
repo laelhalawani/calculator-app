@@ -7,3 +7,4 @@ Simple reactive calculator in Svelte
 - Backspace to delete last input
 - +, -, *, / operators
 
+![image](https://github.com/user-attachments/assets/589e571d-8fb7-4956-b5b1-f4eac5fedeb2)
