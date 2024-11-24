@@ -31,9 +31,10 @@ button {
     width: 70px;
 }
 [role="operation"]{
-    height: 60px;
-    width: 60px;
+    height: 50px;
+    width: 50px;
     background-color: #745c5c;
+    font-size: 25px;
 }
 
 button:hover {

@@ -2,7 +2,7 @@
     import Button from "$lib/Button.svelte";
     import processOperation from "$lib/operationProcessor.svelte";
     let numbers:string[] = ["1","2","3","4","5","6","7","8","9","0","."]
-    let operations:string[] = ["+", "-", "*", "/"]
+    let operations:string[] = ["+", "-", "*", "/", "^"]
     let input: string[] = $state([])
     let result: number|null = $state(null)
     function addToInput(value:string) {
@@ -18,58 +18,19 @@
         input = []
         result = null
     }
-    function onDelte(e:KeyboardEvent):void {
+    function onKeyboardInput(e:KeyboardEvent):void {
         if (e.key==="Backspace" && numbers.length>0){
             input.pop()
-        }
-        else if (e.key==="1") {
-            addToInput(e.key)
-        }
-        else if (e.key==="2") {
-            addToInput(e.key)
-        }
-        else if (e.key==="3") {
-            addToInput(e.key)
-        }
-        else if (e.key==="4") {
-            addToInput(e.key)
-        }
-        else if (e.key==="5") {
-            addToInput(e.key)
-        }
-        else if (e.key==="6") {
-            addToInput(e.key)
-        }
-        else if (e.key==="7") {
-            addToInput(e.key)
-        }
-        else if (e.key==="8") {
-            addToInput(e.key)
-        }
-        else if (e.key==="9") {
-            addToInput(e.key)
-        }
-        else if (e.key==="0") {
-            addToInput(e.key)
-        }
-        else if (e.key===".") {
-            addToInput(e.key)
-        }
-        else if (e.key==="+") {
-            addToInput(e.key)
-        }
-        else if (e.key==="-") {
-            addToInput(e.key)
-        }
-        else if (e.key==="*") {
-            addToInput(e.key)
-        }
-        else if (e.key==="/") {
-            addToInput(e.key)
         }
         else if (e.key==="c")
         {
             clear()
+        }
+        else if (numbers.includes(e.key)){
+            addToInput(e.key)
+        }
+        else if (operations.includes(e.key)){
+            addToInput(e.key)
         }
        
         
@@ -78,7 +39,7 @@
 </script>
 
 <main>
-    <div class="calculator" onkeydowncapture={onDelte}>
+    <div class="calculator" onkeydowncapture={onKeyboardInput}>
         <div class="display">
             <p>{input.length>0 ? input.join(" ") : "_"}</p>
             <div class="reslt"><p>Result: {result}</p></div>
@@ -161,8 +122,9 @@
    
 }
 .operations {
-    width: 110px;
+    width: 95px;
     display: block;
+    margin-left: 15px;
 }
 
 
